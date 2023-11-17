@@ -1,0 +1,6 @@
+[submodule "tictactoe"]
+	path = tictactoe
+	url = /home/jorge/react/tictactoe
+[submodule "tictactoeMio"]
+	path = tictactoeMio
+	url = /home/jorge/react/tictactoeMio
