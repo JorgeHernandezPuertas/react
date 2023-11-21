@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'reactstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      euros: 0,
+      factor: 1.1,
+    }
+  }
+  aumentar() {
+    let auxEuro = this.state.euros+1;
+    this.setState({euros:auxEuro})
+  }
+  disminuir(){
+    let auxEuro = this.state.euros-1;
+    this.setState({euros:auxEuro})
+  }
+  render() {
+    return (
+      <div className="App">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {this.state.euros} Euros equivalen a {this.state.euros * this.state.factor} Dólares
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <p>
+          <Button onClick={() => this.aumentar()}>+</Button><Button onClick={() => this.disminuir()}>-</Button>
+        </p>
+      </div>
+    );
+  }
 }
 
 export default App;
