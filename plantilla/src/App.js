@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 
 function Boton(props) {
   return (
-    <Button>
+    <Button color={props.color} >
       Pulsa para cambiar de color.
     </Button>
   );
@@ -20,7 +20,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Boton />
+        <Boton color={this.state.color} />
       </div>
     );
   }
