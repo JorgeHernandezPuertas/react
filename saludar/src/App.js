@@ -3,15 +3,9 @@ import { Button, Spinner } from 'reactstrap';
 
 function Boton(props) {
   return (
-    <Button color={props.color} onClick={() => props.cambia(props.idioma, props.color)} outline >
+    <Button color={props.color} onClick={() => props.cambia(props.idioma)} outline >
       {props.idioma}
     </Button>
-  );
-}
-
-const Circulo = (props) => {
-  return (
-    <Spinner color={props.color} type="grow" onClick={() => props.cambia()} ></Spinner>
   );
 }
 
@@ -19,18 +13,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      colorSpinner: "secondary",
       letrero: "Saludo en diferentes idiomas",
     }
   }
 
-  cambia(idioma, color){
+  cambia(idioma){
     if (idioma == "Ingles"){
-      this.setState({colorSpinner:color})
+      this.setState({letrero:"Hello"})
     } else if (idioma == "Frances") {
-      this.setState({colorSpinner:color})
+      this.setState({letrero:"Bonjour"})
     } else if (idioma == "Español") {
-      this.setState({colorSpinner:color})
+      this.setState({letrero:"Hola"})
     } else {
       this.setState({letrero:"Ninguno"})
     }
@@ -43,10 +36,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>{this.state.letrero}</h1>
-        <Boton color="secondary" idioma="Ingles" cambia={(idioma, color) => this.cambia(idioma, color)} />
-        <Boton color="danger" idioma="Frances" cambia={(idioma, color) => this.cambia(idioma, color)} />
-        <Boton color="primary" idioma="Español" cambia={(idioma, color) => this.cambia(idioma, color)} />
-        <Circulo color={this.state.colorSpinner} cambia={() => this.cambiaLetrero()} ></Circulo>
+        <Boton color="secondary" idioma="Ingles" cambia={(idioma) => this.cambia(idioma)} />
+        <Boton color="danger" idioma="Frances" cambia={(idioma) => this.cambia(idioma)} />
+        <Boton color="primary" idioma="Español" cambia={(idioma) => this.cambia(idioma)} />
       </div>
     );
   }
