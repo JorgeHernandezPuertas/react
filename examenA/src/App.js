@@ -8,15 +8,15 @@ class App extends React.Component {
       // DEFINE AQUÍ TU ESTADO
       botones: Array(5).fill("secondary"),
       letrero: 0,
-      ultPulsado: 0,
     };
   }
 
   pulsado(boton) {
     let aux = JSON.parse(JSON.stringify(this.state.botones));
-    aux[this.state.ultPulsado] = "secondary";
-    aux[boton] = "danger";
-    this.setState({letrero: this.state.letrero + 1, botones: aux, ultPulsado: boton});
+    if (aux[boton] !== "danger"){
+      aux[boton] = "danger";
+      this.setState({letrero: this.state.letrero + 1, botones: aux});
+    }
   }
 
 
