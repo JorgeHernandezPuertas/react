@@ -6,27 +6,16 @@ class App extends React.Component {
     super(props);
     this.state = {
       // DEFINE AQUÍ TU ESTADO
-      botones: Array(5).fill(0),
-      colores: Array(5).fill("secondary"),
+      botones: Array(5).fill({cont: 0, color: "secondary"}),
     };
   }
 
   clickado(boton){
-    this.aumentar(boton);
-    this.cambiarColor(boton);
-  }
-
-  cambiarColor(boton){
-    let aux = JSON.parse(JSON.stringify(this.state.colores));
-    if (aux[boton] !== "danger"){ // Si no lo habian pulsado le cambio el color
-      aux[boton] = "danger" ;
-      this.setState({colores:aux});
-    }
-  }
-
-  aumentar(boton) {
     let aux = JSON.parse(JSON.stringify(this.state.botones));
-    aux[boton]++ ;
+    if (aux[boton].color !== "danger"){
+      aux[boton].color = "danger" ;
+    }
+    aux[boton].cont = aux[boton].cont + 1;
     this.setState({botones:aux});
   }
 
@@ -35,15 +24,15 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <br/><span>&nbsp;</span>
-          <Botoncillo numBoton={0} pulsado={(i) => this.clickado(i)} color={this.state.colores[0]} contador={this.state.botones[0]} />
+          <Botoncillo numBoton={0} pulsado={(i) => this.clickado(i)} color={this.state.botones[0].color} contador={this.state.botones[0].cont} />
           <span>&nbsp;</span>
-          <Botoncillo numBoton={1} pulsado={(i) => this.clickado(i)} color={this.state.colores[1]} contador={this.state.botones[1]} />
+          <Botoncillo numBoton={1} pulsado={(i) => this.clickado(i)} color={this.state.botones[1].color} contador={this.state.botones[1].cont} />
           <span>&nbsp;</span>
-          <Botoncillo numBoton={2} pulsado={(i) => this.clickado(i)} color={this.state.colores[2]} contador={this.state.botones[2]} />
+          <Botoncillo numBoton={2} pulsado={(i) => this.clickado(i)} color={this.state.botones[2].color} contador={this.state.botones[2].cont} />
           <span>&nbsp;</span>
-          <Botoncillo numBoton={3} pulsado={(i) => this.clickado(i)} color={this.state.colores[3]} contador={this.state.botones[3]} />
+          <Botoncillo numBoton={3} pulsado={(i) => this.clickado(i)} color={this.state.botones[3].color} contador={this.state.botones[3].cont} />
           <span>&nbsp;</span>
-          <Botoncillo numBoton={4} pulsado={(i) => this.clickado(i)} color={this.state.colores[4]} contador={this.state.botones[4]} />
+          <Botoncillo numBoton={4} pulsado={(i) => this.clickado(i)} color={this.state.botones[4].color} contador={this.state.botones[4].cont} />
         </header>
       </div>
     );
