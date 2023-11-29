@@ -1,0 +1,11 @@
+div.botonera {
+    display: flex;
+    flex-flow: wrap;
+}
+div.botonera > div{
+    flex: 100%;
+    text-align: center;
+}
+div.botonera > div.doble button:first-child {
+    margin-right:3rem;
+}
