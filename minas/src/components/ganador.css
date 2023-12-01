@@ -1,0 +1,12 @@
+div.ganador {
+    display: flex;
+}
+
+div.ganador > h1 {
+    flex:15rem 0;
+    background-color: #444;
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+}

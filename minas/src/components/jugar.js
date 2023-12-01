@@ -6,7 +6,7 @@ function Jugar(props){
 
     return (
         <div className='jugar'>
-            <Button color='success' onClick={() => props.crearCampo()} >Jugar</Button>
+            <Button color='success' onClick={() => props.iniciarJuego()} >Jugar</Button>
         </div>
     );
 }
