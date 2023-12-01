@@ -1,20 +1,29 @@
 import React from 'react';
-import { Button } from 'reactstrap';
 import './campo.css';
+import { Button } from 'reactstrap';
 
 function Campo(props) {
-    const filas = props.filas;
-    const columnas = props.columnas;
-    const posicion = props.pos;
-    const campoMinas = Array(filas).fill(Array(columnas).fill(<Button>1</Button>));
-    campoMinas[posicion.x][posicion.y] = <Button outline >1</Button>;
+    const campoMinas = props.campo;
+    const posicion = props.posicion;
 
+    const lista = []; // Guardo la presentación de lo que voy a imprimir
+    campoMinas.map((e, indexi) => { // Creo la presentación en función del campo de minas
+        e.map((b, indexj)=> {
+            if (indexi === posicion.y && indexj === posicion.x){ // Si es la posición
+                lista.push(<Button outline>{b}</Button>);
+            } else if (b === 0){
+                lista.push(<Button color='danger'>{b}</Button>);
+            } else {
+                lista.push(<Button>1</Button>);
+            }
+        }) 
+    })
+    
 
 
     return (
         <div className='campo'>
-            <p>Filas: {filas}, Columnas: {columnas} </p>
-            {campoMinas}
+            {lista}
         </div>
     );
 }
