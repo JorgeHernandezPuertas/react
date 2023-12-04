@@ -1,13 +1,6 @@
 div.selectorMinas * {
     margin:0;
 }
-div.selectorMinas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-div.selectorMinas > div {
-    display: flex;
-    flex-flow: column;
-}
+.selectorMinas button {
+    margin:0 .5rem;
+  }

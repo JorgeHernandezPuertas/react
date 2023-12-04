@@ -1,11 +1,22 @@
 div.botonera {
     display: flex;
     flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
 }
-div.botonera > div{
+div.botonera * {
+    margin: 0;
+}
+div.botonera > div {
+    display: flex;
     flex: 100%;
-    text-align: center;
+    flex-flow: wrap;
 }
-div.botonera > div.doble button:first-child {
+div.botonera > div > div{
+    flex: 100%;
+    display: flex;
+    justify-content: center;
+}
+div.botonera > div > div.doble button:first-child {
     margin-right:3rem;
 }

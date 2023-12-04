@@ -3,7 +3,6 @@ div.ganador {
 }
 
 div.ganador > h1 {
-    flex:15rem 0;
     background-color: #444;
     text-align: center;
     color: white;

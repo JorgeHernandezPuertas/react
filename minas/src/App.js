@@ -31,53 +31,65 @@ class App extends React.Component {
     for (let i = 0; i < this.state.filas; i++) {
       campo[i] = Array(this.state.columnas);
       for (let j = 0; j < this.state.columnas; j++) {
-        campo[i][j] = 5;
+        campo[i][j] = 10;
       }
     }
     // Pongo las minas
     campo = this.ponerMinas(campo);
     // Marco las distancias
-    campo = this.marcarDistancias(campo);
+    campo = this.ponerDistancia(campo);
     this.resetJuego(campo);
   }
 
-  marcarDistancias = (campo) => {
-    // Recorro el campo buscando las minas
-    for (let i = 0; i < campo.length; i++) {
-      for (let j = 0; j < campo[i].length; j++) {
-        // Si encuento una bomba marco distancias
-        if (campo[i][j] == 0) {
-          const posMina = { x: j, y: i };
-          this.ponerDistancia(campo, posMina);
-        }
-      }
-    }
-
-    return campo;
-  }
-
-  ponerDistancia = (campo, posMina) => {
-    // Cojo el rango max como el length más grande
-    let rangoMax = campo.length < campo[posMina.y].length ? campo[posMina.y].length : campo.length;
-
-    // Para todos los rangos posibles
-    for (let rango = 1; rango >= rangoMax; rango++) {
-      // Recorro el area del rango que toque
-      for (let i = posMina.y - rango; i <= posMina.y + rango; i++) {
-        for (let j = posMina.x - rango; j <= posMina.x + rango; j++) {
-          // Si está dentro del campo
-          if (i >= 0 && j >= 0 && i < campo.length && j < campo[i].length) {
-            // Miro solo el perimetro del rango, que es lo único que necesito
-            if (i == posMina.y - rango || j == posMina.x - rango || i == posMina.y + rango || j == posMina.y + rango) {
-              // Si el elemento no es la bomba y es mayor que el rango lo cambio por el rango menor q le toque
-              if (campo[i][j] != 0 && campo[i][j] > rango) {
-                // Si el rango es mayor o igual que 4 lo dejo en 4
-                campo[i][j] = rango >= 4 ? 4 : rango;
-              }
+  ponerDistancia = (campo) => {
+    // Cambiamos a fuerza bruta
+    let c = true;
+    while (c) {
+        c = false;
+        for (let i = 0; i < campo.length; i++) {
+            for (let j = 0; j < campo[i].length; j++) {
+                // Arriba
+                if (i > 0 && campo[i][j] > campo[i - 1][j] + 1) {
+                    campo[i][j] = campo[i - 1][j] + 1;
+                    c = true;
+                }
+                // Abajo
+                if (i < campo.length - 1 && campo[i][j] > campo[i + 1][j] + 1) {
+                    campo[i][j] = campo[i + 1][j] + 1;
+                    c = true;
+                }
+                // Derecha
+                if (j < campo[i].length - 1 && campo[i][j] > campo[i][j + 1] + 1) {
+                    campo[i][j] = campo[i][j + 1] + 1;
+                    c = true;
+                }
+                // Izquierda
+                if (j > 0 && campo[i][j] > campo[i][j - 1] + 1) {
+                    campo[i][j] = campo[i][j - 1] + 1;
+                    c = true;
+                }
+                // Diagonal arriba derecha
+                if (j < campo[i].length - 1 && i > 0 && campo[i][j] > campo[i - 1][j + 1] + 1) {
+                    campo[i][j] = campo[i - 1][j + 1] + 1;
+                    c = true;
+                }
+                // Diagonal arriba izquierda
+                if (j > 0 && i > 0 && campo[i][j] > campo[i - 1][j - 1] + 1) {
+                    campo[i][j] = campo[i - 1][j - 1] + 1;
+                    c = true;
+                }
+                // Diagonal abajo derecha
+                if (j < campo[i].length - 1 && i < campo.length - 1 && campo[i][j] > campo[i + 1][j + 1] + 1) {
+                    campo[i][j] = campo[i + 1][j + 1] + 1;
+                    c = true;
+                }
+                // Diagonal abajo izquierda
+                if (j > 0 && i < campo.length - 1 && campo[i][j] > campo[i + 1][j - 1] + 1) {
+                    campo[i][j] = campo[i + 1][j - 1] + 1;
+                    c = true;
+                }
             }
-          }
         }
-      }
     }
     return campo;
   }
@@ -188,8 +200,6 @@ class App extends React.Component {
         <SelectorMinas numMinas={this.state.numMinas} aumentar={() => this.aumentar()} disminuir={() => this.disminuir()} />
         <Jugar filas={this.state.filas} columnas={this.state.columnas} iniciarJuego={() => this.iniciarJuego()} />
         {this.state.terminado.acabado && <Ganador ganado={this.state.terminado.ganado} />}
-        {this.state.campoMinas && <Campo posicion={this.state.posicion} campo={this.state.campoMinas} />}
-        {this.state.campoMinas && <Botonera mover={(lado) => this.mover(lado)} />}
         {this.state.campoMinas && <footer>
           <Button color='danger' >Bomba</Button>
           <Button color='warning' >1</Button>
@@ -197,6 +207,8 @@ class App extends React.Component {
           <Button color='primary' >3</Button>
           <Button color='secondary' >4+</Button>
         </footer>}
+        {this.state.campoMinas && <Campo posicion={this.state.posicion} campo={this.state.campoMinas} />}
+        {this.state.campoMinas && <Botonera mover={(lado) => this.mover(lado)} />}
       </div>
     );
   }

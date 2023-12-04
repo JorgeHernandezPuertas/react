@@ -26,9 +26,12 @@ function Campo(props) {
                     case 4:
                         lista.push(<Button color='secondary'>X</Button>);
                         break;
+                    default:
+                        lista.push(<Button color='secondary'>X</Button>);
+                        break;
                 }
             } else {
-                lista.push(<Button color='secondary'>{b}</Button>);
+                lista.push(<Button color='secondary'></Button>);
             }
         })
         lista.push(<br />);

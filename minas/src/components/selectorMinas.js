@@ -6,12 +6,11 @@ function SelectorMinas(props) {
 
     return (
         <div className='selectorMinas'>
-            <p>#minas</p>
+            <p>minas: {props.numMinas}</p>
             <div>
                 <Button onClick={() => props.aumentar()}>+</Button>
                 <Button onClick={() => props.disminuir()}>-</Button>
             </div>
-            <p>{props.numMinas}</p>
         </div>
     );
 }
