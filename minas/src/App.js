@@ -181,15 +181,25 @@ class App extends React.Component {
   }
 
   cambiarTam = (accion, parte) => {
+    const max = 20;
+    const min = 4;
     if (parte == "fila" && accion == "aumentar") {
-      this.setState({ filas: this.state.filas + 1 });
+      if (this.state.filas < max){
+        this.setState({ filas: this.state.filas + 1 });
+      }
     } else if (parte == "columna" && accion == "aumentar") {
-      this.setState({ columnas: this.state.columnas + 1 });
+      if (this.state.columnas < max){
+        this.setState({ columnas: this.state.columnas + 1 });
+      }
     }
     if (parte == "fila" && accion == "disminuir") {
-      this.setState({ filas: this.state.filas - 1 });
+      if (this.state.filas > min) {
+        this.setState({ filas: this.state.filas - 1 });
+      }
     } else if (parte == "columna" && accion == "disminuir") {
-      this.setState({ columnas: this.state.columnas - 1 });
+      if (this.state.columnas > min) {
+        this.setState({ columnas: this.state.columnas - 1 });
+      }
     }
   }
 

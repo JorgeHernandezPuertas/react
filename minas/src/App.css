@@ -47,18 +47,9 @@ footer {
   justify-content: center;
   padding: 0 2rem;
   margin-bottom: 1rem;
-  flex: 1;
+  flex: 100%;
 }
 .botonera {
-  flex: 1;
+  flex: 100%;
   margin-top: 1rem;
-}
-
-@media (max-width:900px) {
-  footer {
-    flex: 100%;
-  }
-  .botonera {
-    flex: 100%;
-  }
 }
