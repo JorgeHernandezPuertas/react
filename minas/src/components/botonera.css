@@ -18,5 +18,11 @@ div.botonera > div > div{
     justify-content: center;
 }
 div.botonera > div > div.doble button:first-child {
-    margin-right:3rem;
+    margin-right:2.5rem;
+}
+
+div.botonera button {
+    width: 2.5rem;
+    height: 2.5rem;
+    text-align: center;
 }

@@ -53,3 +53,12 @@ footer {
   flex: 1;
   margin-top: 1rem;
 }
+
+@media (max-width:900px) {
+  footer {
+    flex: 100%;
+  }
+  .botonera {
+    flex: 100%;
+  }
+}
