@@ -84,7 +84,7 @@ class App extends Component {
     const tamanio = 4;
     for (let i = 0; i < matriz.length; i++) {
       for (let j = 0; j < matriz[i].length; j++) {
-        if (this.comprobarFila(matriz, i, j, color, tamanio) || this.comprobarColumna(matriz, i, j, color, tamanio)) {
+        if (this.comprobarFila(matriz, i, j, color, tamanio) || this.comprobarColumna(matriz, i, j, color, tamanio) || this.comprobarDiagonalDescendente(matriz, i, j, color, tamanio) || this.comprobarDiagonalAscendente(matriz, i, j, color, tamanio)) {
           finalizadoAux.ganador = "Ganan los " + this.state.turno;
           finalizadoAux.terminado = true;
         }
@@ -133,6 +133,38 @@ class App extends Component {
       if (i - fila + 1 === tamanio) {
         return true;
       }
+    }
+    // Devuelvo false si no ha ganado por la fila
+    return false;
+  }
+
+  comprobarDiagonalDescendente(matriz, fila, columna, color, tamanio) {
+    let colAux = columna;
+    for (let i = fila; i < matriz.length; i++) {
+      if (colAux >= matriz[i].length || matriz[i][colAux] !== color) {
+        break;
+      }
+      // Si la cantidad de elementos recorridos antes de romper el bucle es el tamaño, es que ha ganado
+      if (i - fila + 1 === tamanio) {
+        return true;
+      }
+      colAux++;
+    }
+    // Devuelvo false si no ha ganado por la fila
+    return false;
+  }
+
+  comprobarDiagonalAscendente(matriz, fila, columna, color, tamanio) {
+    let colAux = columna;
+    for (let i = fila; i < matriz.length; i++) {
+      if (colAux < 0 || matriz[i][colAux] !== color) {
+        break;
+      }
+      // Si la cantidad de elementos recorridos antes de romper el bucle es el tamaño, es que ha ganado
+      if (i - fila + 1 === tamanio) {
+        return true;
+      }
+      colAux--;
     }
     // Devuelvo false si no ha ganado por la fila
     return false;
