@@ -28,3 +28,14 @@ h2 {
   border-radius: 100%;
   transition: background-color .5s ease;
 }
+
+.tablero button.coloreado {
+  position: relative;
+  top: -50rem;
+  animation: caida 1s ease both;
+}
+
+@keyframes caida {
+  from {top: -50rem;}
+  to {top: 0;}
+}

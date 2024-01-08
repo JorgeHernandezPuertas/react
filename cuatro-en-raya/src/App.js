@@ -16,8 +16,8 @@ const MapaBotones = ({ listaBotones, listaColores, handleClick }) => {
         return <Button key={contador} color='light' onClick={() => handleClick(columna)} ></Button>;
       }
       if (e2 === null) return <Button key={contador} color='light' ></Button>;
-      if (e2 === listaColores[0]) return <Button key={contador} color={listaColores[0]} ></Button>;
-      if (e2 === listaColores[1]) return <Button key={contador} color={listaColores[1]} ></Button>;
+      if (e2 === listaColores[0]) return <Button key={contador} color={listaColores[0]} className='coloreado' ></Button>;
+      if (e2 === listaColores[1]) return <Button key={contador} color={listaColores[1]} className='coloreado' ></Button>;
 
     })
   });
