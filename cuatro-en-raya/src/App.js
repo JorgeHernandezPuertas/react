@@ -6,7 +6,6 @@ import './App.css';
 const MapaBotones = ({ listaBotones, listaColores, handleClick }) => {
 
   const botonesAux = JSON.parse(JSON.stringify(listaBotones));
-  console.log(botonesAux);
 
   const botones = botonesAux.map((e, altura) => {
     let contador = -1;
@@ -21,7 +20,6 @@ const MapaBotones = ({ listaBotones, listaColores, handleClick }) => {
 
     })
   });
-  console.log(botones);
 
   return (
     <div className='tablero'>
