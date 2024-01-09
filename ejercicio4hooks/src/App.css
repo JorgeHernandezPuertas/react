@@ -1,0 +1,41 @@
+body {
+  width: 100%;
+}
+.App {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow:wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.App > * {
+  flex: 100%;
+}
+.App > p {
+  padding-top: 3rem;
+}
+
+.form {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  text-align: center;
+  padding-top: 2.5rem;
+}
+
+.form > div {
+  flex: 100%;
+  padding-top: 1rem;
+}
+
+.App h3 {
+  padding-bottom: 1.5rem;
+  padding-top: 4rem;
+}
+
+.App p {
+  margin: 0;
+}
