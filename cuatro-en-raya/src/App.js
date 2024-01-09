@@ -11,13 +11,11 @@ const MapaBotones = ({ listaBotones, listaColores, handleClick }) => {
     let contador = -1;
     return e.map((e2, columna) => {
       contador++;
-      if (altura === 0 && e2 === null) { // Cuando sea la primera fila y esté en blanco aún le pongo el handleClick
-        return <Button key={contador} color='light' onClick={() => handleClick(columna)} ></Button>;
-      }
-      if (e2 === null) return <Button key={contador} color='light' ></Button>;
+      // Cuando sea la primera fila y esté en blanco aún le pongo el handleClick
+      if (altura === 0 && e2 === null)  return <Button key={contador} color='light' onClick={() => handleClick(columna)} ></Button>;
       if (e2 === listaColores[0]) return <Button key={contador} color={listaColores[0]} className='coloreado' ></Button>;
       if (e2 === listaColores[1]) return <Button key={contador} color={listaColores[1]} className='coloreado' ></Button>;
-
+      return <Button key={contador} color='light' ></Button>;
     })
   });
 
