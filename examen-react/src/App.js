@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Button } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const MapaBotones = (props) => {
+const MapaBotones = ({ handleClick, listaBotones }) => {
   // este componente pinta el tablero 9x9 con las props que le paso.
-  const botonesLogico = JSON.parse(JSON.stringify(props.listaBotones))
+  const botonesLogico = JSON.parse(JSON.stringify(listaBotones))
   const tablero = []
 
   botonesLogico.map((fila, numFila) => {
@@ -15,7 +15,7 @@ const MapaBotones = (props) => {
         filaAux.push(<Button color='primary'></Button>)
       } else {
         // Si es primera fila le pongo el handleClick y si no solo el color
-        const boton = numFila === 0 ? <Button onClick={() => props.handleClick(numCol)} outline></Button> : <Button outline></Button>
+        const boton = numFila === 0 ? <Button onClick={() => handleClick(numCol)} outline></Button> : <Button outline></Button>
         filaAux.push(boton)
       }
       return col
@@ -69,14 +69,14 @@ class App extends Component {
       }
       botonesAux.push(fila)
     }
-    this.setState({ listaBotones: botonesAux })
+    return botonesAux
   }
 
   render () {
     return (
       <div className="App">
         <h1> BUCHACA </h1>
-        <MapaBotones listaBotones={this.state.listaBotones} handleClick={(x, y) => this.clica(x, y)} />
+        <MapaBotones listaBotones={this.state.listaBotones} handleClick={(x) => this.clica(x)} />
       </div>
     )
   }
