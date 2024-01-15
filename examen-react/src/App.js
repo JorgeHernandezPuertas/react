@@ -39,7 +39,7 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      listaBotones: this.componentWillMount()
+      listaBotones: this.componentWillMount(9)
       // no se puede modificar el state
     }
   }
@@ -59,12 +59,12 @@ class App extends Component {
     this.setState({ listaBotones: botonesAux })
   }
 
-  componentWillMount () {
+  componentWillMount (tam) {
     // aquí es donde creo las nueve columnas con los datos iniciales.
     const botonesAux = []
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < tam; i++) {
       const fila = []
-      for (let j = 0; j < 9; j++) {
+      for (let j = 0; j < tam; j++) {
         fila.push(null)
       }
       botonesAux.push(fila)
