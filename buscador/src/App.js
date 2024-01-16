@@ -4,7 +4,7 @@ import Buscador from './components/Buscador.js'
 
 function App () {
   const [pueblos] = useState([
-    'Estepona', 'Sabinillas', 'San pedro', 'Cancelada', 'Ojen', 'Malaga', 'Marbella', 'Fuengirola', 'Los Barrios', 'Mijas'
+    'Estepona', 'Sabinillas', 'San pedro', 'Cancelada', 'Ojen', 'Malaga', 'Marbella', 'Fuengirola', 'Los Barrios', 'Mijas', 'Fuenlabrada', 'Motril'
   ])
   const [busqueda, setBusqueda] = useState('')
 
