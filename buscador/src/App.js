@@ -1,6 +1,7 @@
 import './App.css'
 import { useState } from 'react'
 import Buscador from './components/Buscador.js'
+import Resultado from './components/Resultado.js'
 
 function App () {
   const [pueblos] = useState([
@@ -14,17 +15,10 @@ function App () {
     setBusqueda(busqueda)
   }
 
-  // Filtro los pueblos
-  let filtrados = pueblos.filter((p) => busqueda !== '' && p.toLowerCase().startsWith(busqueda.toLowerCase()))
-  if (filtrados.length > 1) filtrados = filtrados.reduce((p1, p2) => `${p1} - ${p2}`)
-
   return (
     <div className="App">
       <Buscador handleChange={handleChange} />
-      {busqueda !== '' && <div className="resultado">
-        <h3>Resultados</h3>
-        {filtrados}
-      </div>}
+      {busqueda !== '' && <Resultado busqueda={busqueda} pueblos={pueblos} />}
     </div>
   )
 }
