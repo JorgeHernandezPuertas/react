@@ -42,7 +42,7 @@ function App () {
     <div className="App">
       <ListaDeseos deseos={deseos} />
       <AnadirDeseo handleSubmit={handleSubmit} />
-      {<Buscador handleChange={handleChange} deseos={deseos} busqueda={busqueda} handleClick={(e) => handleClick(e)} />}
+      <Buscador handleChange={handleChange} deseos={deseos} busqueda={busqueda} handleClick={(e) => handleClick(e)} />
     </div>
   )
 }
