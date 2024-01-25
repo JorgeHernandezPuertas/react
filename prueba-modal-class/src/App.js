@@ -16,11 +16,11 @@ const VentanaModalDiccionario = (props) => {
     // COMPLETA ESTA FUNCION
     let elegidoAux;
     // Me quedo con los hijos en los que matcheen la busqueda y mapeo el array para quedarme con los valores
-    const matchings = options.filter((e) => e.toLowerCase().includes(event.target.value.toLowerCase()))
+    const matchings = options.find((e) => e.toLowerCase().includes(event.target.value.toLowerCase()))
     // Si tengo algun match pongo el primero como value
-    if (matchings[0] !== undefined) {
+    if (matchings !== undefined) {
       // Pongo la elegida por ahora donde tiene que ir
-      elegidoAux = matchings[0]
+      elegidoAux = matchings
     } else {
       elegidoAux = ""
     }
