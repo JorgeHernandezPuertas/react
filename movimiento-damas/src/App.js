@@ -6,29 +6,21 @@ function Botonera ({ tablero, seleccionado, handleClickSeleccion }) {
   // COMPONENTE QUE RENDERIZA EL TABLERO
   // Parseo la matriz para hacer las filas
   const vistaTablero = tablero.map((fila, indexFila) => {
-    const filaAux = fila.map((e, indexCol) => {
-    // Por cada fila miro si es par para ver donde dejo el boton en blanco
-      if (indexFila % 2 === 0) {
-        if (seleccionado && seleccionado.posX === indexCol && seleccionado.posY === indexFila) {
-          return e === 'verde'
-            ? <><Button outline /><Button color='secondary' onClick={() => handleClickSeleccion(indexCol, indexFila)} /></>
-            : <><Button outline /><Button color='success' onClick={() => handleClickSeleccion(indexCol, indexFila)} /></>
-        } else {
-          // Miro si es pieza verde o gris para ponerle el botón al color
-          return e === 'verde' ? <><Button outline /><Button color='secondary' onClick={() => handleClickSeleccion(indexCol, indexFila)} /></> : <><Button outline /><Button color='success' onClick={() => handleClickSeleccion(indexCol, indexFila)} /></>
-        }
-      } else {
-        if (seleccionado && seleccionado.posX === indexCol && seleccionado.posY === indexFila) {
-          return e === 'verde'
-            ? <><Button color='secondary' onClick={() => handleClickSeleccion(indexCol, indexFila)} /><Button outline /></>
-            : <><Button color='success' onClick={() => handleClickSeleccion(indexCol, indexFila)} /><Button outline /></>
-        } else {
-          return e === 'verde' ? <><Button color='secondary' /><Button outline /></> : <><Button color='success' /><Button outline /></>
-        }
+    const filaAux = fila.map((col, indexCol) => {
+      let boton
+      switch (col) {
+        case 'verde':
+          boton = (seleccionado && seleccionado.posY === indexFila && seleccionado.posX === indexCol) ? <Button color='success' active /> : <Button color='success' onClick={handleClickSeleccion} />
+          return boton
+        case 'gris':
+          boton = (seleccionado && seleccionado.posY === indexFila && seleccionado.posX === indexCol) ? <Button color='secondary' active /> : <Button color='secondary' />
+          return boton
+        default:
+          return <Button outline />
       }
     })
-    // Devuelvo la fila nueva con el salto de linea al nuevo tablero
-    return <>{filaAux}<br/></>
+    filaAux.push(<br/>)
+    return filaAux
   })
 
   return (
@@ -46,16 +38,28 @@ function App () {
   useEffect(() => {
     // ESTE HOOK SE EJECUTARÁ AL PRINCIPIO DE LA APLICACIÓN. ANTES DE RENDERIZAR.
     const tamanioAltura = 8
-    const tamanioAncho = 4
+    const tamanioAncho = 8
     const tableroAux = []
+    let color = ''
     for (let i = 0; i < tamanioAltura; i++) {
       tableroAux.push([])
       for (let j = 0; j < tamanioAncho; j++) {
-        if (i < 4) {
-          tableroAux[i].push('verde')
+        // Elijo el color del jugador en esta parte del tablero
+        if (i < 3) {
+          color = 'gris'
+        } else if (i > 4) {
+          color = 'verde'
         } else {
-          tableroAux[i].push('gris')
+          color = 'blanco'
         }
+        // Dejo la separación entre cada ficha de color
+        if (i % 2 === 0 && j % 2 === 0) {
+          color = 'blanco'
+        } else if (i % 2 !== 0 && j % 2 !== 0) {
+          color = 'blanco'
+        }
+        // Pongo el color que irá en esa posición
+        tableroAux[i].push(color)
       }
     }
 
@@ -73,7 +77,7 @@ function App () {
 
   function mover (posX, posY) {
     // Si hay alguno seleccionado
-    if (seleccionado) {
+    if (seleccionado !== null) {
       // Me copio el tablero para modificarlo luego
       const tableroAux = JSON.parse(JSON.stringify(tablero))
       // En función de cual esté seleccionado
