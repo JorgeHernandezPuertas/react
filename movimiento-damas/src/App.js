@@ -10,13 +10,13 @@ function Botonera ({ tablero, seleccionado, handleClickSeleccion }) {
       let boton
       switch (col) {
         case 'verde':
-          boton = (seleccionado && seleccionado.posY === indexFila && seleccionado.posX === indexCol) ? <Button color='success' active /> : <Button color='success' onClick={handleClickSeleccion} />
+          boton = (seleccionado && seleccionado.posY === indexFila && seleccionado.posX === indexCol) ? <Button color='success' active onClick={() => handleClickSeleccion(indexCol, indexFila)} /> : <Button color='success' onClick={() => handleClickSeleccion(indexCol, indexFila)} />
           return boton
         case 'gris':
-          boton = (seleccionado && seleccionado.posY === indexFila && seleccionado.posX === indexCol) ? <Button color='secondary' active /> : <Button color='secondary' />
+          boton = (seleccionado && seleccionado.posY === indexFila && seleccionado.posX === indexCol) ? <Button color='secondary' active onClick={() => handleClickSeleccion(indexCol, indexFila)} /> : <Button color='secondary' onClick={() => handleClickSeleccion(indexCol, indexFila)} />
           return boton
         default:
-          return <Button outline />
+          return <Button outline onClick={() => handleClickSeleccion(indexCol, indexFila)} />
       }
     })
     filaAux.push(<br/>)
@@ -32,7 +32,7 @@ function Botonera ({ tablero, seleccionado, handleClickSeleccion }) {
 
 function App () {
   const [tablero, setTablero] = useState([])
-  const [seleccionado, setSeleccionado] = useState(null)
+  const [seleccionado, setSeleccionado] = useState()
 
   // useEffect para crear el tablero al iniciar el programa
   useEffect(() => {
@@ -67,32 +67,34 @@ function App () {
   }, [])
 
   function handleClickSeleccion (posX, posY) {
-    if (seleccionado === null) {
+    if (!seleccionado) {
       setSeleccionado({ posX, posY })
     } else {
-      setSeleccionado(null)
       mover(posX, posY)
+      setSeleccionado(undefined)
     }
   }
 
   function mover (posX, posY) {
     // Si hay alguno seleccionado
-    if (seleccionado !== null) {
+    if (seleccionado) {
       // Me copio el tablero para modificarlo luego
       const tableroAux = JSON.parse(JSON.stringify(tablero))
       // En función de cual esté seleccionado
       switch (tablero[seleccionado.posY][seleccionado.posX]) {
         case 'verde':
           // Como es verde compruebo si se mueve uno hacia arriba y en diagonal
-          if (seleccionado.posY - posY === 1 && (seleccionado.posX - posX === 1 || seleccionado.posX - posX === -1)) {
+          if (comprobarMovimiento('verde', posX, posY)) {
             // Cambio al color que le toca
+            tableroAux[seleccionado.posY][seleccionado.posX] = 'blanco'
             tableroAux[posY][posX] = 'verde'
           }
           break
         case 'gris':
           // Como es verde compruebo si se mueve uno hacia abajo y en diagonal
-          if (seleccionado.posY - posY === -1 && (seleccionado.posX - posX === 1 || seleccionado.posX - posX === -1)) {
+          if (comprobarMovimiento('gris', posX, posY)) {
             // Cambio al color que le toca
+            tableroAux[seleccionado.posY][seleccionado.posX] = 'blanco'
             tableroAux[posY][posX] = 'gris'
           }
           break
@@ -100,6 +102,17 @@ function App () {
           break
       }
       setTablero(tableroAux)
+    }
+  }
+
+  function comprobarMovimiento (color, posX, posY) {
+    switch (color) {
+      case 'verde':
+        return seleccionado.posY - posY === 1 && (seleccionado.posX - posX === 1 || seleccionado.posX - posX === -1) && tablero[posY][posX] !== 'verde'
+      case 'gris':
+        return seleccionado.posY - posY === -1 && (seleccionado.posX - posX === 1 || seleccionado.posX - posX === -1) && tablero[posY][posX] !== 'gris'
+      default:
+        return false
     }
   }
 
