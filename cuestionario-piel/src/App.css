@@ -23,11 +23,11 @@ h1 {
 
 .test {
   display: flex;
-  width: 40dvw;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex: 1;
+  padding-inline: 2rem;
 
   h2 {
     flex: 100%;
@@ -37,7 +37,8 @@ h1 {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    flex: 1;
+    flex: 40dvw 0;
+    margin-inline: 3rem;
 
     div {
       display: flex;

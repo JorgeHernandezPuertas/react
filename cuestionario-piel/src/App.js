@@ -13,6 +13,7 @@ function App () {
 
   const [empezado, setEmpezado] = useState(false)
   const [pregunta, setPregunta] = useState(0)
+  const [respuestas, setRespuestas] = useState(Array(PREGUNTAS.length))
 
   function start () {
     setEmpezado(!empezado)
@@ -26,11 +27,18 @@ function App () {
     setPregunta(pregunta - 1)
   }
 
+  function seleccionar (elemento) {
+    const respuestasAux = JSON.parse(JSON.stringify(respuestas))
+    respuestasAux[pregunta] = elemento
+    console.log(respuestasAux)
+    setRespuestas(respuestasAux)
+  }
+
   return (
     <div className="App">
       <h1>Descubre tu fototipo</h1>
       { !empezado && <Button className='btn-start' color='primary' onClick={ start } >Empezar test</Button> }
-      { empezado && <Test preguntaActual={ pregunta } next={ next } previous={ previous } /> }
+      { empezado && <Test preguntaActual={ pregunta } next={ next } previous={ previous } seleccionar={seleccionar} /> }
     </div>
   )
 }
