@@ -1,11 +1,23 @@
-export const TIPOS_PIEL = {
-  tipo1: { texto: 'Tu piel es de tipo I', info: 'Muy sensible a la luz solar', puntosMax: 7 },
-  tipo2: { texto: 'Tu piel es de tipo II', info: 'Sensible a la luz solar', puntosMax: 21 },
-  tipo3: { texto: 'Tu piel es de tipo III', info: 'Sensibilidad normal a la luz solar ', puntosMax: 42 },
-  tipo4: { texto: 'Tu piel es de tipo IV', info: 'La piel tiene tolerancia a la luz solar', puntosMax: 68 },
-  tipo5: { texto: 'Tu piel es de tipo V', info: 'La piel es oscura. Alta tolerancia', puntosMax: 84 },
-  tipo6: { texto: 'Tu piel es de tipo VI', info: 'La piel es negra. Altísima tolerancia', puntosMax: Infinity }
-}
+export const TIPOS_PIEL = [
+  {
+    texto: 'Tu piel es de tipo I', info: 'Muy sensible a la luz solar', puntosMax: 7
+  },
+  {
+    texto: 'Tu piel es de tipo II', info: 'Sensible a la luz solar', puntosMax: 21
+  },
+  {
+    texto: 'Tu piel es de tipo III', info: 'Sensibilidad normal a la luz solar ', puntosMax: 42
+  },
+  {
+    texto: 'Tu piel es de tipo IV', info: 'La piel tiene tolerancia a la luz solar', puntosMax: 68
+  },
+  {
+    texto: 'Tu piel es de tipo V', info: 'La piel es oscura. Alta tolerancia', puntosMax: 84
+  },
+  {
+    texto: 'Tu piel es de tipo VI', info: 'La piel es negra. Altísima tolerancia', puntosMax: Infinity
+  }
+]
 
 export const VALORES = {
   valor1: 0,

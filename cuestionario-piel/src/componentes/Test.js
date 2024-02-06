@@ -2,6 +2,7 @@ import { Button } from 'reactstrap'
 import { PREGUNTAS } from '../datos/datos.js'
 
 export default function Test ({ preguntaActual, next, previous, seleccionar, respuestas }) {
+  // Formateo las respuestas actuales
   const respuestasActuales = <div className='respuestas' key={crypto.randomUUID()} >{PREGUNTAS[preguntaActual].respuestas.map((r, i) => {
     const newId = crypto.randomUUID()
     const opcion = respuestas[preguntaActual] === i
@@ -14,19 +15,20 @@ export default function Test ({ preguntaActual, next, previous, seleccionar, res
     return opcion
   })}</div>
 
+  // Construyo lo que muestro dependiendo de la página en la que esté
   let mostrar
 
   if (preguntaActual === 0) {
-    mostrar = <>{respuestasActuales}<Button onClick={next} >{'>'}</Button></>
+    mostrar = <>{respuestasActuales}<Button color='light' onClick={next} >{'>'}</Button></>
   } else if (preguntaActual === PREGUNTAS.length - 1) {
-    mostrar = <><Button onClick={previous} >{'<'}</Button>{respuestasActuales}</>
+    mostrar = <>{respuestasActuales}<Button color='light' onClick={previous} >{'<'}</Button></>
   } else {
-    mostrar = <><Button onClick={previous} >{'<'}</Button>{respuestasActuales}<Button onClick={next} >{'>'}</Button></>
+    mostrar = <>{respuestasActuales}<Button color='light' onClick={previous} >{'<'}</Button> <Button color='light' onClick={next} >{'>'}</Button></>
   }
 
   return (
     <div className="test">
-      <h2>{ PREGUNTAS[preguntaActual].pregunta }</h2>
+      <h2>{`${preguntaActual + 1}. ${PREGUNTAS[preguntaActual].pregunta}`}</h2>
         { mostrar }
     </div>
   )
