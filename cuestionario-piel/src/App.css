@@ -99,7 +99,7 @@ h1 {
 }
 
 .seleccionar {
-  animation: seleccionar .2s linear both;
+  animation: seleccionar .2s ease-out both;
 }
 
 .aparecer {

@@ -1,21 +1,23 @@
+export const DIR_PHP = 'http://localhost/js-web/recuento-test/'
+
 export const TIPOS_PIEL = [
   {
-    texto: 'Tu piel es de tipo I', info: 'Muy sensible a la luz solar', puntosMax: 7
+    tipo: 1, texto: 'Tu piel es de tipo I', info: 'Muy sensible a la luz solar', puntosMax: 7
   },
   {
-    texto: 'Tu piel es de tipo II', info: 'Sensible a la luz solar', puntosMax: 21
+    tipo: 2, texto: 'Tu piel es de tipo II', info: 'Sensible a la luz solar', puntosMax: 21
   },
   {
-    texto: 'Tu piel es de tipo III', info: 'Sensibilidad normal a la luz solar ', puntosMax: 42
+    tipo: 3, texto: 'Tu piel es de tipo III', info: 'Sensibilidad normal a la luz solar ', puntosMax: 42
   },
   {
-    texto: 'Tu piel es de tipo IV', info: 'La piel tiene tolerancia a la luz solar', puntosMax: 68
+    tipo: 4, texto: 'Tu piel es de tipo IV', info: 'La piel tiene tolerancia a la luz solar', puntosMax: 68
   },
   {
-    texto: 'Tu piel es de tipo V', info: 'La piel es oscura. Alta tolerancia', puntosMax: 84
+    tipo: 5, texto: 'Tu piel es de tipo V', info: 'La piel es oscura. Alta tolerancia', puntosMax: 84
   },
   {
-    texto: 'Tu piel es de tipo VI', info: 'La piel es negra. Altísima tolerancia', puntosMax: Infinity
+    tipo: 6, texto: 'Tu piel es de tipo VI', info: 'La piel es negra. Altísima tolerancia', puntosMax: Infinity
   }
 ]
 
@@ -135,35 +137,6 @@ export const PREGUNTAS = [
       {
         texto: 'Ninguna',
         valor: VALORES.valor4
-      }
-    ]
-  },
-  {
-    pregunta: '¿De qué color natural es su pelo?',
-    respuestas: [
-      {
-        texto: 'Pelirrojo, rubio claro',
-        valor: VALORES.valor1
-      },
-      {
-        texto: 'Rubio, castaño claro',
-        valor: VALORES.valor2
-      },
-      {
-        texto: 'Castaño',
-        valor: VALORES.valor3
-      },
-      {
-        texto: 'Castaño oscuro',
-        valor: VALORES.valor4
-      },
-      {
-        texto: 'Castaño oscuro-negro',
-        valor: VALORES.valor6
-      },
-      {
-        texto: 'Negro',
-        valor: VALORES.valor7
       }
     ]
   },

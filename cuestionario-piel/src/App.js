@@ -58,8 +58,8 @@ function App () {
     <div className="App">
       <h1>Descubre tu fototipo</h1>
       { !empezado && <Button className='btn-start' color='primary' onClick={ start } >Empezar test</Button> }
-      { empezado && <Test cambiarPagina={cambiarPagina} preguntaActual={ pregunta } next={ next } previous={ previous } seleccionar={seleccionar} respuestas={respuestas} animacion={animacion} /> }
-      { terminado && <Resultados respuestas={respuestas} resetear={resetear} terminado={terminado} />}
+      { empezado && <Test cambiarPagina={ cambiarPagina } preguntaActual={ pregunta } next={ next } previous={ previous } seleccionar={ seleccionar } respuestas={ respuestas } animacion={ animacion } /> }
+      { terminado && <Resultados respuestas={ respuestas } resetear={ resetear } terminado={ terminado } /> }
 
     </div>
   )
