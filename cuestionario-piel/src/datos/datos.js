@@ -1,5 +1,14 @@
 export const DIR_PHP = 'http://localhost/js-web/recuento-test/'
 
+export const IMAGENES = [
+  'tipo1.png',
+  'tipo2.png',
+  'tipo3.png',
+  'tipo4.png',
+  'tipo5.png',
+  'tipo6.png'
+]
+
 export const TIPOS_PIEL = [
   {
     tipo: 1, texto: 'Tu piel es de tipo I', info: 'Muy sensible a la luz solar', puntosMax: 7

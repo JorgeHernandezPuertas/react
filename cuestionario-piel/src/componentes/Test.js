@@ -32,6 +32,7 @@ export default function Test ({ preguntaActual, next, previous, cambiarPagina, s
 
   if (preguntaActual === 0) {
     botones = <Fragment key={ crypto.randomUUID() }>
+      <Button key={ crypto.randomUUID() } color='light' onClick={ next } style={ { visibility: 'hidden' } } >{ '<' }</Button>
       {
         respuestas.map((e, i) => {
           const boton = i === preguntaActual
@@ -53,6 +54,7 @@ export default function Test ({ preguntaActual, next, previous, cambiarPagina, s
           return boton
         })
       }
+      <Button key={ crypto.randomUUID() } color='light' onClick={ next } style={ { visibility: 'hidden' } } >{ '>' }</Button>
     </Fragment>
   } else {
     botones = <Fragment key={ crypto.randomUUID() }>
