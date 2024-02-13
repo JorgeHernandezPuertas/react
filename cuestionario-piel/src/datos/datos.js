@@ -1,4 +1,4 @@
-export const DIR_PHP = 'http://localhost/js-web/recuento-test/'
+export const DIR_PHP = './recuento-test/'
 
 export const IMAGENES = [
   'tipo1.png',

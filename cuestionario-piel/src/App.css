@@ -59,6 +59,11 @@ h1 {
         max-width: 30rem;
         padding-block: .5rem;
         margin-left: 10rem;
+        cursor: pointer;
+
+        input {
+          cursor: pointer;
+        }
       }
 
       input {
