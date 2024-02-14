@@ -63,39 +63,39 @@ export default function Resultados ({ respuestas, resetear, terminado, recuento 
 
   return (
     <div>
-      <Button className='btn-resultado' color='success' onClick={ toggle } >Ver resultados</Button>
-      { modal && <Modal className='modal' isOpen={ modal } centered fullscreen >
+      <Button className='btn-resultado' color='success' onClick={toggle} >Ver resultados</Button>
+      {modal && <Modal className='modal' isOpen={modal} centered fullscreen >
         <ModalHeader className='header'>Resultados</ModalHeader>
         <ModalBody>
           <header>
             <section>
               <h4>Puntuación</h4>
-              <p>¡Has obtenido <strong>{ puntuacion }</strong> puntos!</p>
+              <p>¡Has obtenido <strong>{puntuacion}</strong> puntos!</p>
             </section>
             <section>
               <h4>Tipo</h4>
-              <p>{ tipoPiel.texto }</p>
+              <p>{tipoPiel.texto}</p>
             </section>
             <section>
               <h4>Características</h4>
-              <p>{ tipoPiel.info }</p>
+              <p>{tipoPiel.info}</p>
             </section>
           </header>
           <main>
-            <img src={ url } alt={ `Imagen de Fototipo ${tipoPiel.tipo}` } title={ `Ejemplo de Fototipo ${tipoPiel.tipo}` } />
+            <img src={url} alt={`Imagen de Fototipo ${tipoPiel.tipo}`} title={`Ejemplo de Fototipo ${tipoPiel.tipo}`} />
           </main>
           <footer>
             {
-              <Porcentajes estadisticasTipos={ estadisticasTipos } modal={ modal } />
+              <Porcentajes estadisticasTipos={estadisticasTipos} modal={modal} />
             }
           </footer>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={ () => { enviarResultado(); resetear(); toggle() } }>
+          <Button color="primary" onClick={() => { enviarResultado(); resetear(); toggle() }}>
             Terminar
-          </Button>{ ' ' }
+          </Button>{' '}
         </ModalFooter>
-      </Modal> }
+      </Modal>}
     </div >
   )
 }
