@@ -37,6 +37,10 @@
       cursor: pointer;
       background-color: inherit;
 
+      &:hover {
+        background-color: #ccc;
+      }
+
       .supermarket {
         background-color: orange;
       }
