@@ -1,3 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+
+  h2 {
+    flex: 100%;
+  }
+}
+
+.tabla {
+  border: 1px solid black;
+  margin-inline: 6rem;
+  flex: 100%;
+  max-width: 40rem;
+  display: flex;
+  flex-flow: wrap;
+
+  .fila {
+    display: flex;
+    flex: 100%;
+    overflow: hidden;
+    margin: 0;
+
+    .col {
+      flex: 10%;
+      border: none;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      padding: .25rem;
+      overflow: hidden;
+      cursor: pointer;
+      background-color: inherit;
+
+      .supermarket {
+        background-color: orange;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    &:last-child .col {
+      border-bottom: none;
+    }
+  }
 }
