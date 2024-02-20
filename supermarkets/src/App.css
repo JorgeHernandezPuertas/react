@@ -8,16 +8,16 @@
   flex-flow: wrap;
   justify-content: center;
 
-  h2 {
+  & h2 {
     flex: 100%;
   }
+
 }
 
 .tabla {
   border: 1px solid black;
   margin-inline: 6rem;
   flex: 100%;
-  max-width: 40rem;
   display: flex;
   flex-flow: wrap;
 
@@ -41,17 +41,30 @@
         background-color: #ccc;
       }
 
-      .supermarket {
-        background-color: orange;
-      }
-
       &:last-child {
         border-right: none;
       }
     }
 
+    .supermarket {
+      background-color: orange;
+    }
+
     &:last-child .col {
       border-bottom: none;
     }
+  }
+}
+
+.poblacion {
+  flex: 100%;
+}
+
+.supermercados {
+  flex: 100%;
+
+  & ul {
+    width: 50%;
+    margin: 0 auto;
   }
 }

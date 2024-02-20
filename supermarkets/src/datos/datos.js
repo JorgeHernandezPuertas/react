@@ -14,7 +14,7 @@ export const POBLACION =
 // Me hago mi poblacion con el formato que quiero
 export const POBLACION2 = POBLACION.map((fila) => {
   const filaAux = fila.map((col) => {
-    const colAux = { personas: col, supermarket: { abierto: false, nombre: '', clientes: 0 } }
+    const colAux = { personas: col, supermarket: { abierto: false, posicion: { x: -1, y: -1 }, clientes: 0 } }
     return colAux
   })
   return filaAux
