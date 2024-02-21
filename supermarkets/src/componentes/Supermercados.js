@@ -12,13 +12,14 @@ export default function Supermercados ({ poblacion }) {
     return fila
   })
 
-  const mostrarSupers = <ol>
+  const mostrarSupers = <ul>
     {
-      supers.map(s => {
-        return <li key={crypto.randomUUID()}>{`El supermercado en  x=${s.posicion.x + 1} e y=${s.posicion.y + 1} tiene ${s.clientes} clientes`}</li>
+      supers.map((s, index) => {
+        const clientes = Math.ceil(s.clientes * 100) / 100
+        return <li key={crypto.randomUUID()}>{index + 1}. &emsp;{`El supermercado con posición (${s.posicion.x + 1}, ${s.posicion.y + 1}) tiene ${clientes} clientes`}</li>
       })
     }
-  </ol>
+  </ul>
 
   return (
     <div className="supermercados">
