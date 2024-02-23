@@ -14,46 +14,38 @@
 
 }
 
-.tabla {
-  border: 1px solid black;
-  margin-inline: 6rem;
-  flex: 100%;
+.fila {
   display: flex;
-  flex-flow: wrap;
+  flex: 100%;
+  overflow: hidden;
+  margin: 0;
+}
 
-  .fila {
-    display: flex;
-    flex: 100%;
-    overflow: hidden;
-    margin: 0;
+.col {
+  flex: 10%;
+  border: none;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  padding: .25rem;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: inherit;
+}
 
-    .col {
-      flex: 10%;
-      border: none;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
-      padding: .25rem;
-      overflow: hidden;
-      cursor: pointer;
-      background-color: inherit;
+.col:hover {
+  background-color: #ccc;
+}
 
-      &:hover {
-        background-color: #ccc;
-      }
+.col:last-child {
+  border-right: none;
+}
 
-      &:last-child {
-        border-right: none;
-      }
-    }
+.fila:last-child .col {
+  border-bottom: none;
+}
 
-    .supermarket {
-      background-color: orange;
-    }
-
-    &:last-child .col {
-      border-bottom: none;
-    }
-  }
+.supermarket {
+  background-color: orange;
 }
 
 .poblacion {
@@ -62,14 +54,22 @@
 
 .supermercados {
   flex: 100%;
+}
 
-  & ul {
-    width: 50%;
-    margin: 0 auto;
-    list-style-type: none;
+.supermercados ul {
+  width: 50%;
+  margin: 0 auto;
+  list-style-type: none;
+}
 
-    & li {
-      padding-block: .5rem;
-    }
-  }
+.supermercados ul li {
+  padding-block: .5rem;
+}
+
+.tabla {
+  border: 1px solid black;
+  margin-inline: 6rem;
+  flex: 100%;
+  display: flex;
+  flex-flow: wrap;
 }
