@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState, useEffect } from 'react'
 import { create, all } from 'mathjs'
 import Formulario from './components/Formulario'
+import Ventana from './components/Ventana.js'
 import { PISOS, PRECIOS } from './datos/datos.js'
 
 function App () {
@@ -10,8 +11,7 @@ function App () {
   const [math] = useState(create(all, {}))
   const [datosUsuario, setDatosUsuario] = useState([])
   const [precio, setPrecio] = useState()
-
-  console.log(vector, datosUsuario, precio)
+  const [modal, setModal] = useState(false)
 
   // Calculo el vector de regresión multivariable
   useEffect(() => {
@@ -21,9 +21,8 @@ function App () {
 
     // Aplico la fórmula de la normal para calcular el vector de regresión lineal
     const VECTOR = math.multiply(math.multiply(math.inv(math.multiply(math.transpose(MATRIZ_PISOS), MATRIZ_PISOS)), math.transpose(MATRIZ_PISOS)), MATRIZ_PRECIOS)
-    console.log('Vector final:')
-    console.log(VECTOR)
-    setVector(VECTOR)
+    // Me quedo solo con los datos de la matriz
+    setVector(VECTOR._data)
   }, [math])
 
   useEffect(() => {
@@ -33,24 +32,31 @@ function App () {
         resultado += valor * datosUsuario[indice]
         return valor
       })
+      // Aproximo a las centésimas
+      resultado = Math.floor(resultado * 100) / 100
       setPrecio(resultado)
     }
   }, [datosUsuario, vector])
 
+  useEffect(() => {
+    if (!isNaN(precio)) {
+      setModal(true)
+    }
+  }, [precio])
+
   function establecerDatos (datos) {
     setDatosUsuario(datos)
+    setModal(true)
+  }
+
+  function toggle () {
+    setModal(!modal)
   }
 
   return (
     <div className="App">
-      <Formulario establecerDatos={establecerDatos} />
-      {
-        precio &&
-        <div>
-          <h4>Precio</h4>
-          <p>El precio de tu piso es {precio}</p>
-        </div>
-      }
+      <Formulario establecerDatos={ establecerDatos } />
+      { modal && <Ventana modal={ modal } precio={ precio } toggle={ toggle } /> }
     </div>
   )
 }

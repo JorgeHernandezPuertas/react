@@ -34,3 +34,21 @@
 .formulario form input[type='checkbox'] {
   margin-left: 1rem;
 }
+
+.precio {
+  flex: 100%;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.precio h4 {
+  flex: 100%;
+  text-align: center;
+}
+
+.precio p {
+  flex: 100%;
+  text-align: center;
+}
