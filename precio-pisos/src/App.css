@@ -1,3 +1,36 @@
 .App {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+}
+
+.formulario {
+  display: flex;
+  flex-flow: wrap;
+  flex: 60% 0;
+  margin-top: 2rem;
+}
+
+.formulario h2 {
+  padding-bottom: .5rem;
   text-align: center;
+  flex: 100%;
+}
+
+.formulario form {
+  flex: 100%;
+  padding: 1rem;
+  border: 1px solid #CCC;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: right;
+  border-radius: .5rem;
+}
+
+.formulario form div {
+  flex: 100%;
+}
+
+.formulario form input[type='checkbox'] {
+  margin-left: 1rem;
 }
